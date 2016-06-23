@@ -25,8 +25,13 @@ var Songs = Backbone.Collection.extend({
     $.ajax({
       url: 'https://api.parse.com/1/classes/songs/',
       type: 'GET',
-      data: 'where={"title":{"$regex":"(?i)' + value + '"}}',
+      data: 'where={"$or":[{"title":{"$regex":"(?i)' + value + '"}},' +
+                          '{"artist":{"$regex":"(?i)' + value + '"}}]}',
       success: function(data) {
+        if (data.results.length === 0) {
+          console.log('search returned nothing');
+        }
+
         that.reset();
         _.each(data.results, function(song) {
           that.add(song);
