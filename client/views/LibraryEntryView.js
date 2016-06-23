@@ -5,18 +5,22 @@ var LibraryEntryView = Backbone.View.extend({
 
   template: _.template('<td>(<%= artist %>)</td><td class="library-entry"><%= title %> ' + 
               '<span><img src="assets/button-queue.png" class="button button-queue"></span> ' +
-              '<span><img src="assets/button-play.png" class="button button-play"></span></td>'),
+              '<span><img src="assets/button-play.png" class="button button-play"></span>' + 
+              '<span><%= playCount %></span></td>'),
 
   events: {
     click: function(e) {
-      if (e.target.className === 'library-entry') {
-        console.log('clicked on song');
-        this.model.ended();   // Ugly hack to get ended to fire
-      } else if (e.target.className === 'button button-queue') {
+      if (e.target.className === 'button button-queue') {
         console.log('queued up!');
         this.model.enqueue();
       } else if (e.target.className === 'button button-play') {
         console.log('playing song!');
+        this.model.play();
+      }
+    },
+    dblclick: function(e) {
+      if (e.target.className === 'library-entry') {
+        console.log('clicked on song');
         this.model.play();
       }
     }
