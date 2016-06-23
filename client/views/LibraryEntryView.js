@@ -11,11 +11,13 @@ var LibraryEntryView = Backbone.View.extend({
     click: function(e) {
       if (e.target.className === 'library-entry') {
         console.log('clicked on song');
+        this.model.ended();
       } else if (e.target.className === 'button button-queue') {
         console.log('queued up!');
         this.model.enqueue();
       } else if (e.target.className === 'button button-play') {
         console.log('playing song!');
+        this.model.play();
       }
     }
   },
