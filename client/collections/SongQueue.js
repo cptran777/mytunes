@@ -4,15 +4,20 @@ var SongQueue = Backbone.Collection.extend({
   model: SongModel,
 
   initialize: function() {
-    this.listenTo(Backbone, 'enqueue', this.add);
+    this.on('add', function() {
+      if (this.length === 1) {
+        this.playFirst();
+      }
+    }, this);
   },
 
   events: {
-    'enqueue': 'add'
   },
 
-  add: function() {
-    console.log('tired of listening to yo shit');
+  playFirst: function() {
+    console.log('checking the queue, it is ');
+    console.log(this.length);
+    this.at(0).play();
   }
 
 });
