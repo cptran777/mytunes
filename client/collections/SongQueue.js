@@ -49,12 +49,10 @@ var SongQueue = Backbone.Collection.extend({
   },
 
   dequeueUntil: function(song) {
-    var index = this.indexOf(song.model);
-    console.log(song.model, index);
+    var index = this.indexOf(song);
+
     for (var i = 0; i < index; i++) {
       this.shift();
     }
-
-    console.log(this);
   }
 });

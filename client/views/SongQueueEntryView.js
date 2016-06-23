@@ -14,7 +14,7 @@ var SongQueueEntryView = Backbone.View.extend({
         this.model.dequeue(); 
       } else if (e.target.className === 'queue-entry') {
         this.model.play();
-        this.model.trigger('dequeueUntil', this);
+        this.model.trigger('dequeueUntil', this.model);
       }
     }
   },
