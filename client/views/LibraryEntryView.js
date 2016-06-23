@@ -11,7 +11,7 @@ var LibraryEntryView = Backbone.View.extend({
     click: function(e) {
       if (e.target.className === 'library-entry') {
         console.log('clicked on song');
-        this.model.ended();
+        this.model.ended();   // Ugly hack to get ended to fire
       } else if (e.target.className === 'button button-queue') {
         console.log('queued up!');
         this.model.enqueue();

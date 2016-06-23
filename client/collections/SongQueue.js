@@ -13,6 +13,7 @@ var SongQueue = Backbone.Collection.extend({
     this.on('ended', function() {
       console.log('song over');
       this.dequeueFirst();
+      console.log(this);
     }, this);
 
     this.on('dequeue', function(song) {
