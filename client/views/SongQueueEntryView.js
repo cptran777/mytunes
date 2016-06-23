@@ -12,6 +12,9 @@ var SongQueueEntryView = Backbone.View.extend({
       if (e.target.className === 'button button-remove') {
         console.log('manually removing from queue');
         this.model.dequeue(); 
+      } else if (e.target.className === 'queue-entry') {
+        this.model.play();
+        this.model.trigger('dequeueUntil', this);
       }
     }
   },

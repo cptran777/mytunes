@@ -20,6 +20,11 @@ var SongQueue = Backbone.Collection.extend({
       console.log('dequeuing song...');
       this.dequeueAt(song);
     }, this);
+
+    this.on('dequeueUntil', function(song) {
+      console.log('dequeuing until...');
+      this.dequeueUntil(song);
+    }, this);
   },
 
   events: {
@@ -41,6 +46,15 @@ var SongQueue = Backbone.Collection.extend({
 
   dequeueAt: function(song) {
     this.remove(song);
-  }
+  },
 
+  dequeueUntil: function(song) {
+    var index = this.indexOf(song.model);
+    console.log(song.model, index);
+    for (var i = 0; i < index; i++) {
+      this.shift();
+    }
+
+    console.log(this);
+  }
 });
