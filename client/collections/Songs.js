@@ -30,6 +30,8 @@ var Songs = Backbone.Collection.extend({
       success: function(data) {
         if (data.results.length === 0) {
           console.log('search returned nothing');
+          that.reset();
+          that.trigger('add');
         } 
 
         that.reset();
