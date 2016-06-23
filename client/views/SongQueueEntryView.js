@@ -4,10 +4,16 @@ var SongQueueEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>(<%= artist %>)</td><td class="queue-entry"><%= title %>'),
+  template: _.template('<td>(<%= artist %>)</td><td class="queue-entry"><%= title %>  ' +
+                       '<span><img src="assets/button-remove.png" class="button button-remove"></span>'),
 
   events: {
-
+    click: function(e) {
+      if (e.target.className === 'button button-remove') {
+        console.log('manually removing from queue');
+        this.model.dequeue(); 
+      }
+    }
   },
 
   render: function() {
