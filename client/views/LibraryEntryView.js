@@ -3,7 +3,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>(<%= artist %>)</td><td class="library-entry"><%= title %> ' + 
+  template: _.template('<td class="library-entry">(<%= artist %>)<%= title %> ' + 
               '<span><img src="assets/button-queue.png" class="button button-queue"></span> ' +
               '<span><img src="assets/button-play.png" class="button button-play"></span>' + 
               '<span><%= playCount %></span></td>'),

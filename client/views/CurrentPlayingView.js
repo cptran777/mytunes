@@ -2,7 +2,7 @@ var CurrentPlayingView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td>Currently Playing: <%= title %> by <%= artist %><br><br></td>'),
+  template: _.template('<div class="centered">Currently Playing: <%= title %> by <%= artist %><br><br></div>'),
 
   setSong: function(song) {
     this.model = song;
