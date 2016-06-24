@@ -16,9 +16,7 @@ var LibraryEntryView = Backbone.View.extend({
       } else if (e.target.className === 'button button-play') {
         this.model.play();
       } else if (e.target.className === 'button button-playlist') {
-        console.log('adding song to playlist');
         var playlistName = prompt('What playlist would you like to add this song to?');
-        console.log('adding song to ' + playlistName + ' playlist');
         this.model.addToPlaylist(playlistName);
       }
     },

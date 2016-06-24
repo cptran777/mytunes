@@ -41,28 +41,5 @@ var AppView = Backbone.View.extend({
     
 
     return this.$el.html(divClassContainer);
-
-    // return this.$el.html([
-    //   '<div class="container">',
-    //       '<div class="row row-top centered">',
-    //           '<div class="col-md-1>', 
-    //             this.currentPlayingView.$el, '<br>',
-    //             this.playerView.$el,
-    //           '</div>', 
-    //       '</div>',
-    //       '<div class="row row-bottom">',
-    //          '<div class="col-md-2">',
-    //             this.libraryView.$el, '</div>',
-    //          '<div class="col-md-2">',
-    //             this.queueView.$el, '</div>',
-    //       '</div>',
-    //   '</div>'    
-    // ]);
-    // return this.$el.html([
-    //   this.currentPlayingView.$el,
-    //   this.playerView.$el,
-    //   this.libraryView.$el,
-    //   this.queueView.$el
-    // ]);
   }
 });

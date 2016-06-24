@@ -3,6 +3,12 @@ var Songs = Backbone.Collection.extend({
 
   model: SongModel,
 
+  events: {
+
+  },
+
+  _storage: [],
+
   initialize: function() {
     var that = this;
 
@@ -13,10 +19,21 @@ var Songs = Backbone.Collection.extend({
         _.each(data.results, function(song) {
           that.add(song);
         });
+
+        that.each(function(song) {
+          that._storage.push(song);
+        });
       },
       error: function() {
         console.log('YOU FAIL SIR');
       }
+    });
+
+    this.on('playlist', function(e) {
+      var pl = e.get('playlist');
+      var index = this.indexOf(e);
+
+      this.at(index).set('playlist', pl);
     });
   },
 
@@ -43,6 +60,18 @@ var Songs = Backbone.Collection.extend({
         console.log('YOU FAIL SIR');
       }
     });    
-  }
+  },
 
+  showPlaylist: function(playlist) {
+    var pl = new RegExp(playlist, 'g');
+    var plSongs = this._storage.filter(function(song) {
+      return song.get('playlist').match(pl);
+    });
+
+    this.reset();
+    
+    for (var i = 0; i < plSongs.length; i++) {
+      this.add(plSongs[i]);
+    }
+  }
 });
