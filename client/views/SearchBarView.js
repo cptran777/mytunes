@@ -1,7 +1,8 @@
 var SearchBarView = Backbone.View.extend({
 
   el: '<div><form><input type="text" name"titleSearch" class="search-value">' +
-      '<input type="button" value="search" class="search-button"></form></div><br>',
+      '<input type="button" value="search" class="search-button"></form></div><br>' +
+      '<select class="select-playlist"><option value="all">All Songs</option></select>',
 
   initialize: function() {
     this.render();
